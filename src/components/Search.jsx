@@ -8,6 +8,7 @@ function Search(props) {
 
     const handleSelect = e => {
         setSearch(e.target.value);
+        props.filterFoodList(e.target.value)
     
         console.log("selected", e.target.value);
       };

@@ -19,19 +19,24 @@ function App() {
     setFoodsAll(updatedFoodAll)
   }
 
-  const filterFoodList = (str) => {
-    let filteredFood;
-    
-    if (str === "") {
-      filteredFood = [...foodsAll];
-    } else {
-      filteredFood = foodsAll.filter((food) => {
-        return food.name[0].toLowerCase() === str.toLowerCase();
+  const filterFoodList = (foodName) => {
+    const filteredFood = foods.filter((food) => {
+        return food.name.toLowerCase().includes(foodName.toLowerCase());
       });
-    }
+    
    
     setFoods(filteredFood);
   };
+
+  const deleteFood = (foodName) => {
+    const filteredFood = foods.filter(food => {
+      return food.foodName.toLocaleLowerCase() !== foodName.toLocaleLowerCase()
+    })
+
+  setFoods(filteredFood)
+  setFoodsAll(filteredFood)
+}
+
 
 
   return (

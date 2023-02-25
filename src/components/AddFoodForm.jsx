@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Input } from 'antd';
+import { Divider, Input, Button } from 'antd';
 import { useState } from 'react';
 
 
@@ -12,12 +12,14 @@ function AddFoodForm(props) {
 
     function handleSubmit (event){
         event.preventDefault()
-        const newFood = {
+          const newFood = {
             name:name,
             image:image,
             calories:calories,
             servings:servings
         }
+        props.AddFoodForm(newFood)
+        //Reset the state
         setName('')
         setImage ('')
         setCalories (0)
@@ -40,7 +42,7 @@ function AddFoodForm(props) {
       <label>Servings</label>
       <input value={servings} type="number" onChange={(e) =>setServings(e.target.value)} />
 
-      <button type="submit">Create</button>
+      <Button type="submit">Create</Button>
     </form>
   );
 }
